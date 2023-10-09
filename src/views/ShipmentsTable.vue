@@ -9,10 +9,10 @@
   </div>
   <table>
     <tr>
-      <th>Orderno</th>
-      <th>Deliverydate</th>
+      <th>Order No</th>
+      <th>Delivery Date</th>
       <th>Customer</th>
-      <th>Trackingno</th>
+      <th>Tracking No</th>
       <th>Status</th>
       <th>Consignee</th>
       <th></th>
@@ -29,14 +29,14 @@
         <button @click="openShipmentDetailsModal(shipment)">details</button>
       </td>
       <td>
-        <button>delete</button>
+        <button @click="deleteShipment(shipment)">delete</button>
       </td>
     </tr>
   </table>
 </template>
 
 <script>
-import axios from "axios";
+import axios, {} from "axios";
 import ShipmentDetailsModal from "@/components/ShipmentDetailsModal.vue";
 
 export default {
@@ -56,13 +56,14 @@ export default {
       ],
       errorResponse: '',
       showModal: false,
-      selectedShipment: null
+      selectedShipment: null,
+      shipmentToDelete: null
     }
   },
   methods: {
     async fetchShipments() {
       try {
-        const response = await axios.get('https://my.api.mockaroo.com/shipments.json?key=5e0b62d0')
+        const response = await axios.get('../Shipments.txt')
         this.shipments = response.data
       } catch (error) {
         this.errorResponse = error.response.data
@@ -75,8 +76,13 @@ export default {
     closeModal() {
       this.showModal = false
     },
+    deleteShipment(shipmentToDelete) {
+      const indexToDelete = this.shipments.findIndex(shipment => shipment === shipmentToDelete)
+      if (indexToDelete !== -1) {
+        this.shipments.splice(indexToDelete, 1)
+      }
+    },
   },
-
   beforeMount() {
     this.fetchShipments()
   }
