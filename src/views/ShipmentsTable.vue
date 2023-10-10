@@ -1,9 +1,4 @@
 <template>
-  <ShipmentDetailsModal
-      :open-modal="showModal"
-      :selected-shipment="selectedShipment"
-      @close="closeModal"
-  />
   <div class="home">
     <h1>Shipments table</h1>
   </div>
@@ -26,7 +21,7 @@
       <td>{{ shipment.status }}</td>
       <td>{{ shipment.consignee }}</td>
       <td>
-        <button @click="openShipmentDetailsModal(shipment)">details</button>
+        <button>details</button>
       </td>
       <td>
         <button @click="deleteShipment(shipment)">delete</button>
@@ -37,11 +32,10 @@
 
 <script>
 import axios, {} from "axios";
-import ShipmentDetailsModal from "@/components/ShipmentDetailsModal.vue";
 
 export default {
   name: 'ShipmentsTable',
-  components: {ShipmentDetailsModal},
+  components: {},
   data() {
     return {
       shipments: [
@@ -68,13 +62,6 @@ export default {
       } catch (error) {
         this.errorResponse = error.response.data
       }
-    },
-    openShipmentDetailsModal(shipment) {
-      this.selectedShipment = shipment
-      this.showModal = true
-    },
-    closeModal() {
-      this.showModal = false
     },
     deleteShipment(shipmentToDelete) {
       const indexToDelete = this.shipments.findIndex(shipment => shipment === shipmentToDelete)
