@@ -2,3 +2,35 @@ h1 {
     color: #696c6c;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+th {
+    text-transform: uppercase;
+    font-size: x-small;
+}
+
+tbody{
+    font-size: small;
+}
+
+.btn-custom-blue{
+    background-color: #31AFD4;
+    box-shadow: 2px 2px 4px #c4c4c4;
+}
+
+.btn-custom-blue:hover{
+    background-color: #2a94b2;
+    box-shadow: 3px 3px 6px #949494;
+}
+
+.btn-custom-red{
+    background-color: #E83E64;
+    box-shadow: 2px 2px 4px #c4c4c4;
+}
+
+.btn-custom-red:hover{
+    background-color: #c73556;
+    box-shadow: 3px 3px 6px #949494;
+}

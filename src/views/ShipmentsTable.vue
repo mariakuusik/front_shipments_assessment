@@ -4,7 +4,7 @@
   <div class="container-fluid d-flex justify-content-center text-start">
     <div class="row">
       <div class="col">
-        <table class="table table-hover">
+        <table class="table">
           <thead>
           <tr>
             <th>Order No</th>
@@ -26,12 +26,12 @@
             <td>{{ shipment.status }}</td>
             <td>{{ shipment.consignee }}</td>
             <td>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                      @click="setSelectedShipment(shipment)">details</button>
+              <button type="button" class="btn btn-custom-blue" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                      @click="setSelectedShipment(shipment)">Details</button>
             </td>
             <td>
-              <button type="button" class="btn btn-danger"
-                      @click="deleteShipment(shipment)">delete</button>
+              <button type="button" class="btn btn-custom-red"
+                      @click="deleteShipment(shipment)">Delete</button>
             </td>
           </tr>
           </tbody>
