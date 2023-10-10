@@ -27,7 +27,6 @@
                 </div>
               </div>
               <div class="col-md-6">
-
                 <div class="mb-3">
                   <label for="input4">Date</label>
                   <input v-model="selectedShipment.date" type="text" class="form-control" id="input4">
@@ -51,7 +50,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-          <button @click="updateShipment" type="button" class="btn btn-primary">Update</button>
+          <button @click="updateShipment" type="button" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
         </div>
       </div>
     </div>
@@ -72,7 +71,6 @@ export default {
     }
   },
   methods: {
-
     updateShipment() {
       this.editedShipment = {...this.selectedShipment}
       this.$emit("update-shipment", this.editedShipment)

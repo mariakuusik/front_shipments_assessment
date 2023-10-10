@@ -1,5 +1,5 @@
 <template>
-  <ShipmentDetailsModal :selected-shipment="selectedShipment" @update-shipment="handleUpdate" />
+  <ShipmentDetailsModal :selected-shipment="selectedShipment" @update-shipment="handleUpdate"/>
   <h1>Shipments table</h1>
   <div class="container-fluid d-flex justify-content-center text-start">
     <div class="row">
@@ -87,7 +87,6 @@ export default {
         this.shipments.splice(indexToDelete, 1)
       }
     },
-
     setSelectedShipment(shipment) {
       this.selectedShipment = {...shipment}
     },
@@ -97,6 +96,7 @@ export default {
         this.shipments[indexToUpdate] = updatedShipment
       }
     },
+
   },
 
   beforeMount() {
