@@ -1,4 +1,5 @@
 <template>
+  <ShipmentDetailsModal :selected-shipment="selectedShipment" @update-shipment="handleUpdate" />
   <h1>Shipments table</h1>
   <div class="container-fluid d-flex justify-content-center text-start">
     <div class="row">
@@ -25,10 +26,12 @@
             <td>{{ shipment.status }}</td>
             <td>{{ shipment.consignee }}</td>
             <td>
-              <button type="button" class="btn btn-primary">details</button>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                      @click="setSelectedShipment(shipment)">details</button>
             </td>
             <td>
-              <button type="button" class="btn btn-danger" @click="deleteShipment(shipment)">delete</button>
+              <button type="button" class="btn btn-danger"
+                      @click="deleteShipment(shipment)">delete</button>
             </td>
           </tr>
           </tbody>
@@ -36,32 +39,37 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
 import axios, {} from "axios";
+import ShipmentDetailsModal from "@/components/ShipmentDetailsModal.vue";
 
 export default {
   name: 'ShipmentsTable',
-  components: {},
+  components: {ShipmentDetailsModal},
   data() {
     return {
       shipments: [
         {
-          orderNo: 0,
-          date: 0,
+          orderNo: '',
+          date: '',
           customer: '',
-          trackingNo: 0,
+          trackingNo: '',
           status: '',
           consignee: ''
         }
       ],
       errorResponse: '',
-      showModal: false,
-      selectedShipment: null,
-      shipmentToDelete: null
+      selectedShipment: {
+        orderNo: '',
+        date: '',
+        customer: '',
+        trackingNo: '',
+        status: '',
+        consignee: ''
+      },
+      shipmentToDelete: '',
     }
   },
   methods: {
@@ -79,15 +87,20 @@ export default {
         this.shipments.splice(indexToDelete, 1)
       }
     },
+
+    setSelectedShipment(shipment) {
+      this.selectedShipment = {...shipment}
+    },
+    handleUpdate(updatedShipment) {
+      const indexToUpdate = this.shipments.findIndex(shipment => shipment.orderNo === updatedShipment.orderNo)
+      if (indexToUpdate !== -1){
+        this.shipments[indexToUpdate] = updatedShipment
+      }
+    },
   },
+
   beforeMount() {
     this.fetchShipments()
   }
 }
 </script>
-
-<style scoped>
-html, body {
-  overflow-x: hidden;
-}
-</style>
