@@ -1,33 +1,43 @@
 <template>
-  <div class="home">
-    <h1>Shipments table</h1>
+  <h1>Shipments table</h1>
+  <div class="container-fluid d-flex justify-content-center text-start">
+    <div class="row">
+      <div class="col">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Order No</th>
+            <th>Delivery Date</th>
+            <th>Customer</th>
+            <th>Tracking No</th>
+            <th>Status</th>
+            <th>Consignee</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="shipment in shipments" :key="shipment.orderNo">
+            <td>{{ shipment.orderNo }}</td>
+            <td>{{ shipment.date }}</td>
+            <td>{{ shipment.customer }}</td>
+            <td>{{ shipment.trackingNo }}</td>
+            <td>{{ shipment.status }}</td>
+            <td>{{ shipment.consignee }}</td>
+            <td>
+              <button type="button" class="btn btn-primary">details</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" @click="deleteShipment(shipment)">delete</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-  <table>
-    <tr>
-      <th>Order No</th>
-      <th>Delivery Date</th>
-      <th>Customer</th>
-      <th>Tracking No</th>
-      <th>Status</th>
-      <th>Consignee</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr v-for="shipment in shipments" :key="shipment.orderNo">
-      <td>{{ shipment.orderNo }}</td>
-      <td>{{ shipment.date }}</td>
-      <td>{{ shipment.customer }}</td>
-      <td>{{ shipment.trackingNo }}</td>
-      <td>{{ shipment.status }}</td>
-      <td>{{ shipment.consignee }}</td>
-      <td>
-        <button>details</button>
-      </td>
-      <td>
-        <button @click="deleteShipment(shipment)">delete</button>
-      </td>
-    </tr>
-  </table>
+
+
 </template>
 
 <script>
@@ -75,3 +85,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+html, body {
+  overflow-x: hidden;
+}
+</style>
