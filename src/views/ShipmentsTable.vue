@@ -9,7 +9,7 @@
           <tr>
             <th>Order No</th>
             <th>Delivery Date</th>
-            <th @click="sortBy('customer')">Customer
+            <th class="finger-pointer-cursor" @click="sortBy('customer')">Customer
               <font-awesome-icon :icon="['fas', isSorted('customer') ? 'arrows-up-down' : '']" size="lg" style="color: #000000;" />
             </th>
             <th>Tracking No</th>

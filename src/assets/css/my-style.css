@@ -44,7 +44,15 @@ tbody{
     margin-left: 15px;
 }
 
+.modal-footer {
+    margin-right: 10px;
+}
+
 .form-label {
     font-size: small !important;
     font-weight: bolder;
+}
+
+.finger-pointer-cursor{
+    cursor: pointer;
 }
