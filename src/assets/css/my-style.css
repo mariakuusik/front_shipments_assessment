@@ -1,5 +1,7 @@
 h1 {
     color: #696c6c;
+    margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 table {
@@ -33,4 +35,16 @@ tbody{
 .btn-custom-red:hover{
     background-color: #c73556;
     box-shadow: 3px 3px 6px #949494;
+}
+
+.modal-title.fs-5 {
+    text-transform: uppercase;
+    font-size: small !important;
+    font-weight: bolder;
+    margin-left: 15px;
+}
+
+.form-label {
+    font-size: small !important;
+    font-weight: bolder;
 }
