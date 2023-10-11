@@ -13,29 +13,29 @@
               <div class="col-md-6">
                 <div class="mb-3 text-start">
                   <label for="input1" class="form-label">Order No</label>
-                  <input v-model="selectedShipment.orderNo" type="text" class="form-control" id="input1">
+                  <input v-model="selectedShipment.orderNo" type="text" class="form-control my-focus-area" id="input1">
                 </div>
                 <div class="mb-3 text-start">
                   <label for="input2" class="form-label">Customer</label>
-                  <input v-model="selectedShipment.customer" type="text" class="form-control" id="input2">
+                  <input v-model="selectedShipment.customer" type="text" class="form-control my-focus-area" id="input2">
                 </div>
                 <div class="mb-3 text-start">
                   <label for="input3" class="form-label">Consignee</label>
-                  <input v-model="selectedShipment.consignee" type="text" class="form-control" id="input3">
+                  <input v-model="selectedShipment.consignee" type="text" class="form-control my-focus-area" id="input3">
                 </div>
               </div>
               <div class="col-md-6 text-start">
                 <div class="mb-3">
                   <label for="input4" class="form-label">Date</label>
-                  <input v-model="selectedShipment.date" type="text" class="form-control" id="input4">
+                  <input v-model="selectedShipment.date" type="text" class="form-control my-focus-area" id="input4">
                 </div>
                 <div class="mb-3 text-start">
                   <label for="input5" class="form-label">Tracking No</label>
-                  <input v-model="selectedShipment.trackingNo" type="text" class="form-control" id="input5">
+                  <input v-model="selectedShipment.trackingNo" type="text" class="form-control my-focus-area" id="input5">
                 </div>
                 <div class="mb-3 text-start">
                   <label for="dropdown" class="form-label">Status</label>
-                  <select v-model="selectedShipment.status" class="form-select" id="dropdown">
+                  <select v-model="selectedShipment.status" class="form-select my-focus-area" id="dropdown">
                     <option value="Shipped">Shipped</option>
                     <option value="In Transit">In Transit</option>
                     <option value="Delivered">Delivered</option>
