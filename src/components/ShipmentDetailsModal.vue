@@ -44,7 +44,6 @@
               </div>
             </div>
           </div>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-custom-red" data-bs-dismiss="modal">Cancel</button>
@@ -57,7 +56,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "ShipmentDetailsModal",
   props: {

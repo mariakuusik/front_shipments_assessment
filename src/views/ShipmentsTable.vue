@@ -9,7 +9,9 @@
           <tr>
             <th>Order No</th>
             <th>Delivery Date</th>
-            <th>Customer</th>
+            <th @click="sortBy('customer')">Customer
+              <font-awesome-icon :icon="['fas', isSorted('customer') ? 'arrows-up-down' : '']" size="lg" style="color: #000000;" />
+            </th>
             <th>Tracking No</th>
             <th>Status</th>
             <th>Consignee</th>
@@ -18,7 +20,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="shipment in shipments" :key="shipment.orderNo">
+          <tr v-for="shipment in sortedShipments" :key="shipment.orderNo">
             <td>{{ shipment.orderNo }}</td>
             <td>{{ shipment.date }}</td>
             <td>{{ shipment.customer }}</td>
@@ -44,7 +46,6 @@
 <script>
 import axios, {} from "axios";
 import ShipmentDetailsModal from "@/components/ShipmentDetailsModal.vue";
-
 export default {
   name: 'ShipmentsTable',
   components: {ShipmentDetailsModal},
@@ -70,7 +71,21 @@ export default {
         consignee: ''
       },
       shipmentToDelete: '',
+      sortKey:'customer',
+      sortReverse: false
     }
+  },
+  computed: {
+    sortedShipments() {
+      const key = this.sortKey;
+      const reverse = this.sortReverse ? -1 : 1;
+
+      return [...this.shipments].sort((a, b) => {
+        if (a[key] < b[key]) return -1 * reverse;
+        if (a[key] > b[key]) return 1 * reverse;
+        return 0;
+      });
+    },
   },
   methods: {
     async fetchShipments() {
@@ -96,9 +111,18 @@ export default {
         this.shipments[indexToUpdate] = updatedShipment
       }
     },
-
+    sortBy(key) {
+      if (this.sortKey === key) {
+        this.sortReverse = !this.sortReverse;
+      } else {
+        this.sortReverse = false
+      }
+      this.sortKey = key
+    },
+    isSorted(key) {
+      return this.sortKey === key
+    },
   },
-
   beforeMount() {
     this.fetchShipments()
   }
