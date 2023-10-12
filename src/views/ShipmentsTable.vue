@@ -79,7 +79,6 @@ export default {
     sortedShipments() {
       const key = this.sortKey;
       const reverse = this.sortReverse ? -1 : 1;
-
       return [...this.shipments].sort((a, b) => {
         if (a[key] < b[key]) return -1 * reverse;
         if (a[key] > b[key]) return 1 * reverse;
